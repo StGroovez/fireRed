@@ -12,7 +12,7 @@ public class Lista {
         Lista lista = new Lista();
         Lista[] listas ={};
         String name;
-        String num;
+        Int num;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Nombre de la lista: ");
