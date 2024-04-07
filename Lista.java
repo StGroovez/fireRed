@@ -9,15 +9,20 @@ public class Lista {
     int numeroElementos;
     public static void main(String[] args) {
         
-        
+        Lista lista = new Lista();
         Lista[] listas ={};
+        String name;
+        String num;
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Nombre de la lista: ");
-        String name = sc.nextLine();
+        name = sc.nextLine();
+        lista.setNombre(name);
         System.out.println("Número de elementos: ");
-        int num = sc.nextInt();
+        num = sc.nextInt();
+        lista.setElementos(num);
 
-        Lista.instanciarLista(name, num);
+        lista.agregarElementos();
 
         sc.close();
     }
@@ -38,30 +43,25 @@ public class Lista {
     }
     
     
-    /* MÉTODO CONSTRUCTOR */
-    public static Lista instanciarLista(String nombre, int numeroElementos){
+    /* INSTANCIAR LISTA */
+    public void agregarElementos(){
         Scanner sc = new Scanner(System.in);
-        Lista lista = new Lista();
-        int i = 0;
-        lista.setNombre(nombre);
-        lista.setElementos(numeroElementos);
-            
-        while(i < lista.elementos.length){
+        int i = 0;  
+        while(i < this.elementos.length){
             System.out.println("Agrega un elemento: ");
-            lista.elementos[i] = sc.nextLine();
-            System.out.println(lista.elementos.length);
+            this.elementos[i] = sc.nextLine();
+            System.out.println(this.elementos.length);
             
         /*      COMPROBACIÓN DE QUE GUARDA LOS ELEMENTOS
            
-            for (int ia = 0; ia < lista.elementos.length; ia++) {
-                System.out.println(lista.elementos[ia]);
+            for (int ia = 0; ia < this.elementos.length; ia++) {
+                System.out.println(this.elementos[ia]);
             } 
         */ 
             i++;
         }
         System.out.println("Has llegado al límite de elementos, tu lista ha sido creada");
         sc.close();
-        return lista;
     }
 
 }
@@ -81,12 +81,14 @@ public class Lista {
  * 
  *      AGREGAR ELEMENTOS AL ARRAY
  * -Con un While agregamos elementos al array hasta que el número de iteraciones sea igual al número de elementos que contiene el array
+ * -Hacer un if si el input del usuario esta vacío
  * 
  * 
  *      CREAR Y ACCEDER A NUEVAS LISTAS
  * -Un array que guarde nuevas listas
  * -Cada lista tiene un index dentro del array
  * -Diferenciar las listas por medio de la propiedad Nombre y lugar que ocupa en el array
+ * -Opción para volver a crear otra lista
  * 
   */
 
