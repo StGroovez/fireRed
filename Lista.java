@@ -7,20 +7,21 @@ public class Lista {
     String[] elementos = {};
     String nombre;
     int numeroElementos;
-    public static void main(String[] args) {
-        
+    
+    public static void main(String[] args) {    
         Lista lista = new Lista();
         Lista[] listas ={};
         String name;
-        Int num;
-
+        int num;
         Scanner sc = new Scanner(System.in);
+        
         System.out.println("Nombre de la lista: ");
         name = sc.nextLine();
         lista.setNombre(name);
+        
         System.out.println("Número de elementos: ");
         num = sc.nextInt();
-        lista.setElementos(num);
+        lista.setNumeroElementos(num);
 
         lista.agregarElementos();
 
@@ -35,15 +36,13 @@ public class Lista {
          System.out.println("El nombre de la lista es: " + this.nombre);
     }
 
-
     /* SETTEA EL NÚMERO DE ELEMENTOS */
-    public void setElementos(int numeroElementos){      
+    public void setNumeroElementos(int numeroElementos){      
         this.elementos = new String[numeroElementos];
         System.out.println("El número de elementos de la lista es: " + elementos.length);
     }
     
-    
-    /* INSTANCIAR LISTA */
+    /* AGREGA ELEMENTOS A LA LISTA */
     public void agregarElementos(){
         Scanner sc = new Scanner(System.in);
         int i = 0;  
@@ -51,19 +50,11 @@ public class Lista {
             System.out.println("Agrega un elemento: ");
             this.elementos[i] = sc.nextLine();
             System.out.println(this.elementos.length);
-            
-        /*      COMPROBACIÓN DE QUE GUARDA LOS ELEMENTOS
-           
-            for (int ia = 0; ia < this.elementos.length; ia++) {
-                System.out.println(this.elementos[ia]);
-            } 
-        */ 
             i++;
         }
         System.out.println("Has llegado al límite de elementos, tu lista ha sido creada");
         sc.close();
     }
-
 }
 
 
@@ -89,6 +80,27 @@ public class Lista {
  * -Cada lista tiene un index dentro del array
  * -Diferenciar las listas por medio de la propiedad Nombre y lugar que ocupa en el array
  * -Opción para volver a crear otra lista
+ * 
+ * 
+ *      RECAPITULANDO
+ * 
+ * -Las 4 opciones del menú: 
+ * 
+ * 1-Crear Lista:
+ * -Manejo de errores con condicionales
+ * -Creación del array de listas
+ * 
+ * 2.-Ver listas:
+ * -submenú (switch):
+ * -for loop: lista[i].nombre
+ * -Elige lista por medio del nombre(string): condicionales o switch
+ * -system.out.printin (¿quieres modificas listas?) si o no
+ * 
+ * 3.-Modificiar listas: despliega listas, cambiar lugar de elemento, borrar elemento o agregar elemento:
+ * -System.out.println(¿Qué lista quieres modificar? teclea su nombre) condicionales o switch
+ * -cambiar de lugar un elemento, actualizar nombre del elemento, borrar elemento o agregar un elemento.
+ * 
+ * 4.-Salir
  * 
   */
 
