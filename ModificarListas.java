@@ -1,22 +1,24 @@
+import java.util.Scanner;
 public class ModificarListas{
 	///
+	Scanner scanner = new Scanner(System.in);
 	
 	    //variables de instancia
 	    //lista general donde se encuentran todas las listas
 		int[][] listasGeneral;
 		//que lista modificaremos
-		int[] lista;
+		int lista;
 		//que elemento
-		int elemento = 3;
+		int elemento;
 		//posicion de la lista
-		int elementoLugar=3;
+		int elementoLugar;
 		//nuevo nombre de la lista
 		String elementoNombre="lista 1";
 		
 		
 		//metodo mostrar listas
 		void mostrarListas(){
-		System.out.println("--------Que lista modificaremos?-------");
+		
 		
 		//mostrar listas guardadas listasGeneral
 		
@@ -24,20 +26,68 @@ public class ModificarListas{
 			System.out.println("Lista "+(i+1));
 		}
 		
+		System.out.println("--------Que lista modificaremos?-------");
 		//scaner....
+		lista = scanner.nextInt();
 		//lo que escaneo igualar con for para encontrar la lista
-		
 		//mostrar la lista
-		for(int i=0; listasGeneral.length > i; i++){
-					if(elementoLugar==listasGeneral[i]){
-						
-					}
+		System.out.println("Lista "+ lista);
 		
-		//preguntar cambiar lugar, actualizar nombre de elemento, borrar elemento, agregar elemento
-		//dependiendo lo que quiera se llama al metodo
+		for(int i=0; listasGeneral[lista].length > i; i++){
+			
+			System.out.println(listageneral[lista][i]);
+		
+		
 		
 		}
+		//preguntar cambiar lugar, actualizar nombre de elemento, borrar elemento, agregar elemento
+		//dependiendo lo que quiera se llama al metodo
+		while (true) {
+            System.out.println("Hola, Elija la operación que desea realizar:");
+            System.out.println("1. Cambiar lugar de elemento");
+            System.out.println("2. Actualizar nombre de elemento");
+            System.out.println("3. Borrar elemento");
+            System.out.println("4. Agregar elemento");
+			System.out.println("5. Regresar a menu principal");
+    
+            int opcion = scanner.nextInt();
+
+            if (opcion == 5) {
+                System.out.println("Saliendo de modificar lista.");
+                break;
+            }
+
+            switch (opcion) {
+                case 1:
+                    cambiarLugar();
+                    break;
+                case 2:
+                    actualizarElemento();
+                    break;
+                case 3:
+                    borrarElemento();
+                    break;
+				case 4:
+                    agrergarElemento();
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, elija una acción válida.");
+                    continue;
+            }
+
+            System.out.print("¿Desea realizar otra acción? (Si/No): ");
+            String respuesta = scanner.next().toLowerCase();
+
+            if (respuesta=="no") {
+                System.out.println("Saliendo del programa. ¡Hasta luego, !");
+                break;
+				
+            }else {
+				continue;
+			}
+        }
 		
+		}
 		//metodo cambiar lugar
 		int[] cambiarLugar(){
 			// preguntamos que lugar de la lista
@@ -52,8 +102,25 @@ public class ModificarListas{
 			//vas a modificar otro elemento o que pedo//regresar a menu general
 				
 				}
+		
+		//metodo actualizar nombre
+		String[] actualizarElemento(){
 			
+			return
 		}
+		
+		///metodo borrar elemento
+		String[] borrarElemento(){
+			
+			return
+		}
+		
+		// metodo agregar elemento
+		String[] agrergarElemento(){
+			
+			return
+		}
+}
 	//////////////////////////////////////////////////////////////////////////////////////////////
 		//agregarFruta(frutero,miFruta);
 		String[] nuevaLista=agregarFruta(frutero,miFruta);
