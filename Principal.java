@@ -1,7 +1,7 @@
 import java.util.Scanner;
-public class General {
-
+public class Principal {
     public static void main(String[] args) {
+<<<<<<< HEAD:General.java
         Scanner scanner = new Scanner(System.in);
     
         System.out.print("Seleccione opción: ");
@@ -28,6 +28,13 @@ public class General {
     }*/
 
         while (true) {
+=======
+		
+		Scanner scanner = new Scanner(System.in);
+		ModificarListas Modificar = new ModificarListas(); 
+		
+		while (true) {
+>>>>>>> 3548ce0a816d08be3ac10576a79b6699fe062cd1:Principal.java
             System.out.println("Hola, Elija la operación que desea realizar:");
             System.out.println("1. Crear Lista");
             System.out.println("2. Ver Lista");
@@ -41,15 +48,9 @@ public class General {
                 break;
             }
 
-            /*System.out.print("Ingrese el primer valor: ");
-            int a = scanner.nextInt();
-            System.out.print("Ingrese el segundo valor: ");
-            int b = scanner.nextInt();
-
-            int resultado = 0;*/
-
             switch (opcion) {
                 case 1:
+<<<<<<< HEAD:General.java
                     /*crearLista = 0;*/
                     break;
                 case 2:
@@ -57,6 +58,17 @@ public class General {
                     break;
                 case 3:
                     /*modificarLista = 0;*/
+=======
+                    System.out.println("1");
+                    break;
+                case 2:
+                    System.out.println("2");
+                    break;
+                case 3:
+                    System.out.println("3");
+					Modificar.mostrarListas();
+					
+>>>>>>> 3548ce0a816d08be3ac10576a79b6699fe062cd1:Principal.java
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, elija una acción válida.");
@@ -71,6 +83,10 @@ public class General {
                 break;
             }
         }
+<<<<<<< HEAD:General.java
 
     }
+=======
+	}
+>>>>>>> 3548ce0a816d08be3ac10576a79b6699fe062cd1:Principal.java
 }

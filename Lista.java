@@ -7,53 +7,71 @@ public class Lista {
     String[] elementos = {};
     String nombre;
     int numeroElementos;
+    int maximoElementos = 25;
     
     public static void main(String[] args) {    
-        Lista lista = new Lista();
-        Lista[] listas ={};
-        String name;
-        int num;
         Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Nombre de la lista: ");
-        name = sc.nextLine();
-        lista.setNombre(name);
-        
-        System.out.println("Número de elementos: ");
-        num = sc.nextInt();
-        lista.setNumeroElementos(num);
+        Lista[] listas = new Lista[3];
 
-        lista.agregarElementos();
+        for (int i = 0; i < listas.length; i++) {
+            Lista lista = new Lista();
 
+            System.out.println("Nombre de la lista: ");
+            String name = sc.nextLine();
+            lista.setNombre(name);
+            
+            System.out.println("Ingresa un número entre 1 y 25 ");
+            int num = sc.nextInt();
+            sc.nextLine();
+            lista.setNumeroElementos(num);
+    
+            lista.agregarElementos();
+            listas[i] = lista;
+        }
+
+        /*
+            for (int i = 0; i < listas.length; i++) {
+                System.out.println(listas[i].nombre);
+        }
+        */
         sc.close();
     }
 
     /* MÉTODOS DE LA LISTA */
 
     /* SETTEA EL NOMBRE */
+/* AGREGAR CONDICIONAL POR SI EL USUARIO INGRESA UN VALOR VACÍO */
+
     public void setNombre(String nombre){
          this.nombre = nombre;
          System.out.println("El nombre de la lista es: " + this.nombre);
     }
 
     /* SETTEA EL NÚMERO DE ELEMENTOS */
-    public void setNumeroElementos(int numeroElementos){      
+    public void setNumeroElementos(int numeroElementos){  
+        Scanner scNumeroElementos = new Scanner(System.in);
+
+        /* INGRESAR CONDICIONAL SI EL USUARIO INGRESA UN VALOR QUE NO ES ENTERO */
+        while(numeroElementos > maximoElementos numeroElementos || == 0){
+            System.out.println("Número invalido, vuelve a ingresar un número entre 1 y 25");
+            numeroElementos = scNumeroElementos.nextInt();
+        }    
+
         this.elementos = new String[numeroElementos];
         System.out.println("El número de elementos de la lista es: " + elementos.length);
     }
     
     /* AGREGA ELEMENTOS A LA LISTA */
     public void agregarElementos(){
-        Scanner sc = new Scanner(System.in);
-        int i = 0;  
-        while(i < this.elementos.length){
+        Scanner scAgregarElementos = new Scanner(System.in);
+        
+        /* AGREGAR CONDICIONAL POR SI EL USUARIO INGRESA UN VALOR VACÍO */
+        for (int i = 0; i < this.elementos.length; i++) {
             System.out.println("Agrega un elemento: ");
-            this.elementos[i] = sc.nextLine();
-            System.out.println(this.elementos.length);
-            i++;
+            this.elementos[i] = scAgregarElementos.nextLine();
         }
+        
         System.out.println("Has llegado al límite de elementos, tu lista ha sido creada");
-        sc.close();
     }
 }
 
