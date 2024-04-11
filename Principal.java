@@ -1,32 +1,11 @@
 import java.util.Scanner;
-public class General {
-
+public class Principal {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-    
-        System.out.print("Seleccione opción: ");
-       
-        public class crearLista {
-            package crearLista;
-
-    public class crearLista {
-        public String[] lista(String name, int elements, String[] nuevaLista){
-
-            System.out.println("Escribe el número de elementos que va a tener el array");
-
-         String[] listaNueva = new String[elements]; 
-
-            for(int i = 0; i){
-
-            }
-
-
-
-        return nuevaLista;
-        }
-    }
-
-        while (true) {
+		
+		Scanner scanner = new Scanner(System.in);
+		ModificarListas Modificar = new ModificarListas(); 
+		
+		while (true) {
             System.out.println("Hola, Elija la operación que desea realizar:");
             System.out.println("1. Crear Lista");
             System.out.println("2. Ver Lista");
@@ -40,22 +19,17 @@ public class General {
                 break;
             }
 
-            /*System.out.print("Ingrese el primer valor: ");
-            int a = scanner.nextInt();
-            System.out.print("Ingrese el segundo valor: ");
-            int b = scanner.nextInt();
-
-            int resultado = 0;*/
-
             switch (opcion) {
                 case 1:
-                    crearLista = 0;
+                    System.out.println("1");
                     break;
                 case 2:
-                    verLista = 0;
+                    System.out.println("2");
                     break;
                 case 3:
-                    modificarLista = 0;
+                    System.out.println("3");
+					Modificar.mostrarListas();
+					
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, elija una acción válida.");
@@ -70,7 +44,5 @@ public class General {
                 break;
             }
         }
-
-    }
-}
+	}
 }
