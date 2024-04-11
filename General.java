@@ -6,8 +6,9 @@ public class General {
     
         System.out.print("Seleccione opción: ");
        
-        public class crearLista {
-            package crearLista;
+    /*public class crearLista {
+    package crearLista;
+    }
 
     public class crearLista {
         public String[] lista(String name, int elements, String[] nuevaLista){
@@ -24,7 +25,7 @@ public class General {
 
         return nuevaLista;
         }
-    }
+    }*/
 
         while (true) {
             System.out.println("Hola, Elija la operación que desea realizar:");
@@ -49,13 +50,13 @@ public class General {
 
             switch (opcion) {
                 case 1:
-                    crearLista = 0;
+                    /*crearLista = 0;*/
                     break;
                 case 2:
-                    verLista = 0;
+                    /*verLista = 0;*/
                     break;
                 case 3:
-                    modificarLista = 0;
+                    /*modificarLista = 0;*/
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, elija una acción válida.");
@@ -72,5 +73,4 @@ public class General {
         }
 
     }
-}
 }
