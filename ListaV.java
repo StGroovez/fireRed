@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Lista {
+public class ListaV {
 
     private int elements; //numero de items de la lista creada por el usuario
     private String name; //nombre de la lista creada por el usuario
@@ -10,7 +10,7 @@ public class Lista {
 	private String[] listNames; //lista de los nombres
 	private static int numberOfLists = 0; //numero de listas creadas por el usuario
 	
-    public Lista() {
+    public ListaV() {
         this.scanner = new Scanner(System.in);
         this.numberOfLists = 0;
     }
