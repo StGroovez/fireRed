@@ -2,12 +2,13 @@ import java.util.Scanner;
 public class ModificarListas{
 	///
 	Scanner scanner = new Scanner(System.in);
+	Scanner scanner2 = new Scanner(System.in);
 	
 	    //variables de instancia
 	    //lista general donde se encuentran todas las listas
-		public int[][] listasGeneral =  {{6,7,5,0,4}, {3, 8, 4}, {1,0,2,7}, {9,5}};;
+		public String[][] listasGeneral =  {{"6","7","5","0","4"}, {"3", "8", "4"}, {"1","0","2","7"}, {"9","5"}};;
 		//que lista modificaremos
-		int lista;
+		int lista, opcion;
 		//que elemento
 		int elemento;
 		//posicion de la lista
@@ -15,7 +16,7 @@ public class ModificarListas{
 		//nuevo nombre de la lista
 		
 		String[] prueba;
-		int[] prueba1;
+		String[] prueba1;
 		String elementoNombre="lista 1";
 		
 		
@@ -24,6 +25,7 @@ public class ModificarListas{
 		
 		//mostrar listas guardadas listasGeneral
 		
+		System.out.println("\n");
 		for(int i=0; listasGeneral.length > i; i++){
 			System.out.println("Lista "+(i+1));
 		}
@@ -33,19 +35,18 @@ public class ModificarListas{
 		lista = scanner.nextInt();
 		//lo que escaneo igualar con for para encontrar la lista
 		//mostrar la lista
-		System.out.println("Lista "+ lista);
+		System.out.println("\n Lista "+ lista);
 		
-		for(int i=0; listasGeneral[lista].length > i; i++){
+		for(int i=0; listasGeneral[lista-1].length > i; i++){
 			
-			//System.out.println(listageneral[lista][i]);
-		
+			System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista-1][i]);
 		
 		
 		}
 		//preguntar cambiar lugar, actualizar nombre de elemento, borrar elemento, agregar elemento
 		//dependiendo lo que quiera se llama al metodo
 		while (true) {
-            System.out.println("Hola, Elija la operación que desea realizar:");
+            System.out.println("\n Hola, Elija la operación que desea realizar:");
             System.out.println("1. Cambiar lugar de elemento");
             System.out.println("2. Actualizar nombre de elemento");
             System.out.println("3. Borrar elemento");
@@ -61,10 +62,10 @@ public class ModificarListas{
 
             switch (opcion) {
                 case 1:
-                    cambiarLugar();
+                    cambiarLugar(listasGeneral, lista);
                     break;
                 case 2:
-                    actualizarElemento();
+                    actualizarElemento(listasGeneral, lista);
                     break;
                 case 3:
                     borrarElemento();
@@ -91,25 +92,55 @@ public class ModificarListas{
 		
 		}
 		//metodo cambiar lugar
-		int[] cambiarLugar(){
-			// preguntamos que lugar de la lista
+		String[] cambiarLugar(String[][] listaGeneral, int opcion){
+
+			System.out.println("\n Que valor desea cambiar de lugar?");
+			int opcion2 = scanner.nextInt();
 			
-			//scaner
+			System.out.println("\n Por cual valor se deberia de cambiar?");
+			int opcion3 = scanner.nextInt();
 			
-			//igualamos con for para encontrar elemento de la lista
+			String a=listaGeneral[lista-1][opcion2-1]; /// el que se va a cambiar
+			String b=listaGeneral[lista-1][opcion3-1]; //nuevo valor
 			
-			//igualacion y el que quitamos nuevo lugar
+			System.out.println("\n Nueva Lista");
 			
-			//mostramos lista actualizada
-			//vas a modificar otro elemento o que pedo//regresar a menu general
+			for(int i=0; listaGeneral[lista-1].length > i; i++){
+				if(listaGeneral[lista-1][i]==listaGeneral[lista-1][opcion2-1]){
+					listaGeneral[lista-1][opcion2-1]=b;
+				}
+				if(listaGeneral[lista-1][i]==listaGeneral[lista-1][opcion3-1]){
+					listaGeneral[lista-1][opcion3-1]=a;
+				}
+				System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista-1][i]);
+			} 
 			
-			return prueba1;
+			return listaGeneral[lista-1];
 		}
 		
 		//metodo actualizar nombre
-		String[] actualizarElemento(){
+		String[] actualizarElemento(String[][] listaGeneral, int opcion){
 			
-			return prueba;
+			System.out.println("\n Que valor desea actualizar?");
+			int opcion2 = scanner.nextInt();
+			
+			System.out.println("\n Cual seria el nuevo nombre?");
+			String opcion4 = scanner2.nextLine();
+			
+			String a=opcion4; /// el que se va a cambiar string
+			
+			
+			System.out.println("\n Nueva Lista");
+			
+			for(int i=0; listaGeneral[lista-1].length > i; i++){
+				if(listaGeneral[lista-1][i]==listaGeneral[lista-1][opcion2-1]){
+					listaGeneral[lista-1][opcion2-1]=a;
+				}
+				
+				System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista-1][i]);
+			} 
+			
+			return listaGeneral[lista-1];
 		}
 		
 		///metodo borrar elemento
@@ -124,6 +155,7 @@ public class ModificarListas{
 			return prueba;
 		}
 }
+
 	//////////////////////////////////////////////////////////////////////////////////////////////
 		// agregarFruta(frutero,miFruta);
 		// String[] nuevaLista=agregarFruta(frutero,miFruta);
