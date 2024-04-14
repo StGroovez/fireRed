@@ -1,16 +1,12 @@
-package Lista;
 import java.util.Scanner;
 public class Lista {
-    
     /* ATRIBUTOS DE LA LISTA */
 
     String[] elementos = {};
     String nombre;
     int numeroElementos;
-    int maximoElementos = 25;
     Scanner sc = new Scanner(System.in);
     
-    /* MÉTODOS MAIN */
     public static void main(String[] args) {    
 
         Scanner sc = new Scanner(System.in);
@@ -42,9 +38,21 @@ public class Lista {
             listas[i] = lista;
         }
         sc.close();
+        
+        for (int i = 0; i < listas.length; i++) {
+            listas[i].mostrarElementos();
+        }
     }
 
     /* MÉTODOS DE LA LISTA */
+
+
+    public void mostrarElementos() {
+        System.out.println("Elementos de la lista " + nombre + ": ");
+        for (String elemento : elementos) {
+            System.out.println(elemento);
+        }
+    }
 
     /* SETTEA EL NOMBRE */
     public void setNombre(String nombre){
@@ -55,14 +63,13 @@ public class Lista {
         }
         this.nombre = nombre;
         System.out.println("El nombre de la lista es: " + this.nombre);
-
     }
 
     /* SETTEA EL NÚMERO DE ELEMENTOS */
     public void setNumeroElementos(int numeroElementos){  
 
         /* INGRESAR CONDICIONAL SI EL USUARIO INGRESA UN VALOR QUE NO ES ENTERO */
-        while(numeroElementos > maximoElementos || numeroElementos  == 0){
+        while(numeroElementos  == 0){
             System.out.println("Número invalido, vuelve a ingresar un número entre 1 y 25");
             numeroElementos = sc.nextInt();
         }    
@@ -85,6 +92,10 @@ public class Lista {
             } 
         }
         System.out.println("Has llegado al límite de elementos, tu lista ha sido creada");
+    }
+
+    String getNombre(){
+        return nombre;
     }
 }
   */
