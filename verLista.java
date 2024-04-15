@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class ListaV {
+public class verLista {
 
     private int elements; //numero de items de la lista creada por el usuario
     private String name; //nombre de la lista creada por el usuario
@@ -10,7 +10,7 @@ public class ListaV {
 	private String[] listNames; //lista de los nombres
 	private static int numberOfLists = 0; //numero de listas creadas por el usuario
 	
-    public ListaV() {
+    public verLista() {
         this.scanner = new Scanner(System.in);
         this.numberOfLists = 0;
     }
@@ -78,6 +78,7 @@ public class ListaV {
             System.out.println("No hay listas creadas aún."+numberOfLists);
         }
 		
+    System.out.println(listNames[1]);
 	 System.out.println(Arrays.deepToString(listOfLists));
     }
 	
