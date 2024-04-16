@@ -1,9 +1,10 @@
 import java.util.Scanner;
 public class Principal {        
     
-    static Lista[] listas = new Lista[1];
+    static Lista[] listas = new Lista[];
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+		ModificarListas Modificar = new ModificarListas(); 
         
         System.out.print("Seleccione opción: ");
 
@@ -35,7 +36,7 @@ public class Principal {
                         name = sc.nextLine();
                         lista.setNombre(name);
                         
-                        System.out.println("Ingresa un número entre 1 y 25 ");
+                        System.out.println("Ingresa el número de elementos de tu lista, puede ser entre 1 y 25 ");
                         while(true){
                             if (sc.hasNextInt()) {
                                 num = sc.nextInt();
@@ -63,23 +64,17 @@ public class Principal {
 
                     break;
                 
-		case 2:
+				case 2:
 
                    for(int i=0; listas.length > i; i++){
                       System.out.println("Lista "+ (i+1) + ": " + listas[i].nombre);
                     }
-                                           
-                    /*System.out.print("¿Desea realizar otra acción? (Si/No): ");
-                    String respuesta = scanner.next().toLowerCase();
-                    
-                    if (!respuesta.equals("no")) {
-                        for (int i = 0; i < listas.length; i++) {
-                            listas[i].mostrarElementos();
-                        }
-                    }
-                     */
+				
+					 break;
+					 
                 case 3:
                     /*modificarLista = 0;*/
+					Modificar.mostrarListas();
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, elija una acción válida.");

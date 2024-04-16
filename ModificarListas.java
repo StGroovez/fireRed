@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 public class ModificarListas{
 	///
 	Scanner scanner = new Scanner(System.in);
@@ -8,7 +9,7 @@ public class ModificarListas{
 	    //lista general donde se encuentran todas las listas
 		public String[][] listasGeneral =  {{"6","7","5","0","4"}, {"3", "8", "4"}, {"1","0","2","7"}, {"9","5"}};;
 		//que lista modificaremos
-		int lista, opcion;
+		private int lista1, opcion;
 		//que elemento
 		int elemento;
 		//posicion de la lista
@@ -32,14 +33,14 @@ public class ModificarListas{
 		
 		System.out.println("--------Que lista modificaremos?-------");
 		//scaner....
-		lista = scanner.nextInt();
+		lista1 = scanner.nextInt();
 		//lo que escaneo igualar con for para encontrar la lista
 		//mostrar la lista
-		System.out.println("\n Lista "+ lista);
+		System.out.println("\n Lista "+ lista1);
 		
-		for(int i=0; listasGeneral[lista-1].length > i; i++){
+		for(int i=0; listasGeneral[lista1-1].length > i; i++){
 			
-			System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista-1][i]);
+			System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista1-1][i]);
 		
 		
 		}
@@ -62,13 +63,13 @@ public class ModificarListas{
 
             switch (opcion) {
                 case 1:
-                    cambiarLugar(listasGeneral, lista);
+                    cambiarLugar(listasGeneral, lista1);
                     break;
                 case 2:
-                    actualizarElemento(listasGeneral, lista);
+                    actualizarElemento(listasGeneral, lista1);
                     break;
                 case 3:
-                    borrarElemento();
+                    borrarElemento(listasGeneral, lista1);
                     break;
 				case 4:
                     agrergarElemento();
@@ -100,22 +101,22 @@ public class ModificarListas{
 			System.out.println("\n Por cual valor se deberia de cambiar?");
 			int opcion3 = scanner.nextInt();
 			
-			String a=listaGeneral[lista-1][opcion2-1]; /// el que se va a cambiar
-			String b=listaGeneral[lista-1][opcion3-1]; //nuevo valor
+			String a=listaGeneral[lista1-1][opcion2-1]; /// el que se va a cambiar
+			String b=listaGeneral[lista1-1][opcion3-1]; //nuevo valor
 			
 			System.out.println("\n Nueva Lista");
 			
-			for(int i=0; listaGeneral[lista-1].length > i; i++){
-				if(listaGeneral[lista-1][i]==listaGeneral[lista-1][opcion2-1]){
-					listaGeneral[lista-1][opcion2-1]=b;
+			for(int i=0; listaGeneral[lista1-1].length > i; i++){
+				if(listaGeneral[lista1-1][i]==listaGeneral[lista1-1][opcion2-1]){
+					listaGeneral[lista1-1][opcion2-1]=b;
 				}
-				if(listaGeneral[lista-1][i]==listaGeneral[lista-1][opcion3-1]){
-					listaGeneral[lista-1][opcion3-1]=a;
+				if(listaGeneral[lista1-1][i]==listaGeneral[lista1-1][opcion3-1]){
+					listaGeneral[lista1-1][opcion3-1]=a;
 				}
-				System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista-1][i]);
+				System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista1-1][i]);
 			} 
 			
-			return listaGeneral[lista-1];
+			return listaGeneral[lista1-1];
 		}
 		
 		//metodo actualizar nombre
@@ -132,22 +133,51 @@ public class ModificarListas{
 			
 			System.out.println("\n Nueva Lista");
 			
-			for(int i=0; listaGeneral[lista-1].length > i; i++){
-				if(listaGeneral[lista-1][i]==listaGeneral[lista-1][opcion2-1]){
-					listaGeneral[lista-1][opcion2-1]=a;
+			for(int i=0; listaGeneral[lista1-1].length > i; i++){
+				if(listaGeneral[lista1-1][i]==listaGeneral[lista1-1][opcion2-1]){
+					listaGeneral[lista1-1][opcion2-1]=a;
 				}
 				
-				System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista-1][i]);
+				System.out.println("Valor "+ (i+1)+ "= "+ listasGeneral[lista1-1][i]);
 			} 
 			
-			return listaGeneral[lista-1];
+			return listaGeneral[lista1-1];
 		}
 		
 		///metodo borrar elemento
-		String[] borrarElemento(){
+		String[] borrarElemento(String[][] listaGeneral, int opcion){
 			
-			return prueba;
+			System.out.println("\n Que valor desea borrar?");
+			int opcion5 = scanner.nextInt();
+			
+		
+			String [][] listaGeneral1 = new String [listaGeneral.length][listaGeneral[lista1-1].length-1];
+			
+			
+			for(int i=0; listaGeneral[lista1-1].length > i; i++){
+				if(i==(opcion5-1)){
+					
+					int j, h=0;
+					
+					for(j=0; j<listaGeneral[lista1-1].length; j++){
+						
+						if(j!=i){
+							listaGeneral1[lista1-1][h]=listaGeneral[lista1-1][j];
+						
+							System.out.println("valor " + (1+h) + " " +listaGeneral1[lista1-1][h]); 
+							h++;
+						}
+					}
+				   
+				    
+				 
+				}
+			
+			
+			}
+		return listaGeneral[lista1-1];
 		}
+		
 		
 		// metodo agregar elemento
 		String[] agrergarElemento(){
