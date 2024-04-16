@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Cal {
-private static ListaV lista = new ListaV(); // Instancia única de Lista
+private static verLista lista = new verLista(); // Instancia única de Lista
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
        	//Lista uno = new Lista(scanner);
