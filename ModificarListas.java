@@ -72,7 +72,7 @@ public class ModificarListas{
                     borrarElemento(listasGeneral, lista1);
                     break;
 				case 4:
-                    agrergarElemento();
+                    agrergarElemento(listasGeneral, lista1);
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, elija una acción válida.");
@@ -150,21 +150,22 @@ public class ModificarListas{
 			System.out.println("\n Que valor desea borrar?");
 			int opcion5 = scanner.nextInt();
 			
-		
+		//instanciamos nueva matris para almacenar y ordenar nuevos valores
 			String [][] listaGeneral1 = new String [listaGeneral.length][listaGeneral[lista1-1].length-1];
 			
-			
+			//for para encontrar el valor a eliminar
 			for(int i=0; listaGeneral[lista1-1].length > i; i++){
 				if(i==(opcion5-1)){
-					
+					//ina vez dentro del dato a eliminar recorremos cada valor hasta la posicion exacta y cuando esta sea diferente
+					//igualamos si no seguimos adelante
 					int j, h=0;
 					
 					for(j=0; j<listaGeneral[lista1-1].length; j++){
 						
 						if(j!=i){
 							listaGeneral1[lista1-1][h]=listaGeneral[lista1-1][j];
-						
-							System.out.println("valor " + (1+h) + " " +listaGeneral1[lista1-1][h]); 
+						//mostramos nueva lista con dato borrado
+							System.out.println("valor " + (1+h) + "= " +listaGeneral1[lista1-1][h]); 
 							h++;
 						}
 					}
@@ -175,113 +176,34 @@ public class ModificarListas{
 			
 			
 			}
+			listaGeneral[lista1-1]=listaGeneral1[lista1-1];
 		return listaGeneral[lista1-1];
 		}
 		
 		
 		// metodo agregar elemento
-		String[] agrergarElemento(){
+		String[] agrergarElemento(String[][] listaGeneral, int opcion){
 			
-			return prueba;
+			System.out.println("\n Cual seria el nuevo elemento de la lista?");
+			String nuevoValor = scanner2.nextLine();
+			
+			String [][] listaGeneral1 = new String [listaGeneral.length][listaGeneral[lista1-1].length+1];
+			
+			for(int i=0; listaGeneral1[lista1-1].length > i; i++){
+			if(listaGeneral[lista1-1].length > i){
+				   
+			   listaGeneral1[lista1-1][i]=listaGeneral[lista1-1][i];
+				   
+			   }else {
+				listaGeneral1[lista1-1][i]=nuevoValor;
+				}
+			System.out.println("Valor " + (i+1) + "= " + listaGeneral1[lista1-1][i]);
+				 
+			}
+			
+			listaGeneral[lista1-1]=listaGeneral1[lista1-1];
+			return listaGeneral[lista1-1];
 		}
 }
 
-	//////////////////////////////////////////////////////////////////////////////////////////////
-		// agregarFruta(frutero,miFruta);
-		// String[] nuevaLista=agregarFruta(frutero,miFruta);
-		// cambiarOrden(nuevaLista);
-		// String[] listaAct=eliminarFruta(frutaEliminar,nuevaLista);
-		
-	// static String [] agregarFruta( String [] newFrutero, String newFruta ){
-		
-		// System.out.println("--------Lista Agregando Una Fruta-------");
-			
-		// String [] nuevoFrutero = new String[newFrutero.length+1];
-			
-		// for(int i=0; nuevoFrutero.length > i; i++){
-			// if(newFrutero.length > i){
-				   
-			   // nuevoFrutero[i]=newFrutero[i];
-				   
-			   // }else {
-				// nuevoFrutero[i]=newFruta;
-				// }
-			// System.out.println("Fruta " + (i+1) + ": " + nuevoFrutero[i]);
-				 
-			// }
-			// return nuevoFrutero; 
-	// }
 	
-	// static String [] cambiarOrden (String [] nuevoFrutero){
-		// System.out.println(nuevoFrutero[6]);
-		// System.out.println("--------Cambiar Orden-------");
-		// int [] A=new int [nuevoFrutero.length];
-		// int n, i=0;
-		
-		// Random r=new Random();
-
-		// while (i < nuevoFrutero.length){
-			
-			// n = (int) (Math.random() * nuevoFrutero.length);
-			
-			// if(! busqueda(A,n,i)){
-				// A[i]=n;
-				// System.out.println("--------Cambiar Orden-------"+n);
-				// i++;
-			// }
-		// }
-		
-		// for (int j=0;j<nuevoFrutero.length;j++){
-			
-			// System.out.println("Fruta " + (j+1) + " " + nuevoFrutero[(A[j])]);
-		// }
-		// return nuevoFrutero;
-	
-	// }
-	
-	// static boolean busqueda(int [] A, int n, int i){
-		
-		// int j;
-		
-		// for(j=0; j<i; j++){
-			
-			// if(n==A[j]){
-				// return true;
-			// }
-		// }
-		// return false;
-	// }
-	
-	// static String [] eliminarFruta(String frutaEliminar, String [] nuevaLista){
-		// String [] listaAct = new String [nuevaLista.length-1];
-		
-		// System.out.println("--------Actualizar Lista Quitando " + frutaEliminar+ "-------");
-		
-		// for(int i=0; i<nuevaLista.length; i++){
-			
-			// if(frutaEliminar==nuevaLista[i]){
-				
-				// int j, h=0;
-				// for(j=0; j<nuevaLista.length; j++){
-					
-					// if(j!=i){
-						// listaAct[h]=nuevaLista[j];
-						
-						// System.out.println("Fruta " + (1+h) + " " +listaAct[h]); 
-						// h++;
-					// }
-					
-				// }
-			
-			// }
-		// }
-		
-		// for (int j=0;j<listaAct.length;j++){
-			
-			// System.out.println("Fruta " + (j+1) + " " + listaAct[j]);
-		// }
-		
-		// return listaAct ;
-	// }
-		
-// }
