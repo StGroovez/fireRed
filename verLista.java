@@ -7,14 +7,14 @@ public class verLista {
     private String name; //nombre de la lista creada por el usuario
     private Scanner scanner;
     private Object[][] listOfLists; //lista que guarda las listas creadas por el usuario
-	private String[] listNames; //lista de los nombres
+	private String[] listNames = new String[0]; //lista de los nombres
 	private static int numberOfLists = 0; //numero de listas creadas por el usuario
 	
     public verLista() {
         this.scanner = new Scanner(System.in);
         this.numberOfLists = 0;
     }
-
+//metodo para solicitar el nombre de las listas y el tamaño de las listas
     public void parametros() {
         System.out.println("Crearemos una nueva lista. ");
 
@@ -22,14 +22,23 @@ public class verLista {
         this.name = scanner.nextLine();
 
         System.out.print("Ingrese el número de elementos para la lista: ");
-        this.elements = scanner.nextInt();
-        scanner.nextLine();
-		
-		crearNombre();
+            while(true){
+                if (scanner.hasNextInt()) {
+                    this.elements = scanner.nextInt();
+                    scanner.nextLine();
+                    break;
+                }
+                else{
+                    System.out.println("Ingrese un número entero: ");
+                    scanner.next();
+                }
+            }
+        
     }
+
 //metodo para almacenar el nombre de las listas
  	 
-     public void crearNombre() {
+    public void crearNombre() {
         if (listNames == null) {
             listNames = new String[1];
             listNames[0] = name;
@@ -38,7 +47,6 @@ public class verLista {
             temp[temp.length - 1] = name;
             listNames = temp;
         }
-        
     } 
 	
 //metodo para que el usuario cree una lista
@@ -66,22 +74,25 @@ public class verLista {
     }
 	
 	public void mostrarListas() {
-        if (listOfLists != null && numberOfLists > 0) {
-            for (int i = 0; i < numberOfLists; i++) {
-                System.out.println("Lista " + (i + 1)+" "+ listNames[i]+" :");
-                for (Object elemento : listOfLists[i]) {
-                    System.out.print(elemento + " ");
-                }
-                System.out.println();
-            }
-        } else {
-            System.out.println("No hay listas creadas aún."+numberOfLists);
-        }
-		
-    System.out.println(listNames[1]);
-	 System.out.println(Arrays.deepToString(listOfLists));
-    }
+        if (listNames != null && listNames.length > 0) {
+			System.out.println("Listas creadas:");
+			for (int i = 0; i < numberOfLists; i++) {
+				System.out.println((i + 1) + ". " + listNames[i]);
+			}
+		} else {
+			System.out.println("No hay listas creadas aún.");
+		}
+	}
 	
+	public void mostrarElementosLista(int numeroLista) {
+		if (listOfLists != null && numberOfLists > 0 && numeroLista >= 1 && numeroLista <= numberOfLists) {
+			System.out.println("Elementos de la lista " + numeroLista + ":");
+			System.out.println(Arrays.deepToString(listOfLists[numeroLista - 1]));
+		} else {
+			System.out.println("Lista no encontrada.");
+		}
+        System.out.println(Arrays.deepToString(listOfLists));
+	}
 	
 		
 	
