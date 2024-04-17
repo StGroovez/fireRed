@@ -1,4 +1,3 @@
-package Lista;
 import java.util.Scanner;
 public class Lista {
     /* ATRIBUTOS DE LA LISTA */
@@ -8,46 +7,11 @@ public class Lista {
     int numeroElementos;
     static Scanner sc = new Scanner(System.in);
 
-    
-    public static void main(String[] args) {    
-
-        /* CREAR LISTAS */
-
-        Lista[] listas = new Lista[1];
-        String name;
-        int num = 0;
-        int indexElemento;
-        int indexElemento2;
-
-        for (int i = 0; i < listas.length; i++) {
-            System.out.println("Nombre de la lista: ");
-
-            name = Lista.validarNombre();
-            num = Lista.validacionElementos();
-
-            listas[i] = new Lista(name,  num);
-        }
-        for (int i = 0; i < listas.length; i++) {
-            listas[i].mostrarElementos();
-        }
-
-
-        /* MODIFICAR LISTAS */
-
-        System.out.println("Ingresa el número de elemento que cambiaras de lugar");
-        indexElemento = validacionNumero();
-        System.out.println("Ingresa el número de lugar en que lugar lo quieres colocar");
-        indexElemento2 = validacionNumero();
-
-        listas[0].cambiarElementos(indexElemento, indexElemento2);
-        for (int i = 0; i < listas.length; i++) {
-            listas[i].mostrarElementos();
-        }
-        sc.close();
-    }
-
-
     /* MÉTODOS DE LA LISTA */
+
+    public String[] getElementos() {
+        return this.elementos;
+    }
 
     public void mostrarElementos() {
         System.out.println("Elementos de la lista " + nombre + ": ");
@@ -145,6 +109,8 @@ public class Lista {
         String saveElemento = elementos[elementoBase - 1];
         elementos[elementoBase - 1] = elementos[elementoNuevo - 1];
         elementos[elementoNuevo - 1] = saveElemento;
+        System.out.println("Los elementos han sido intercambiados.");
+        mostrarElementos();
         return elementos;
     }
 
@@ -159,10 +125,35 @@ public class Lista {
         }
         elementos = newElementos;
         System.out.println("Se borró el elemento: " + elementoBorrado + " de la lista.\nLa nueva lista contiene los siguientes elementos:");
+        mostrarElementos();
         return newElementos;
     }
-}
+    
+    String[] agregarElemento(String elementoAgregado){
+        String[] newElementos = new String[elementos.length + 1];
+        for (int i = 0; i < elementos.length; i++) {
+            newElementos[i] = elementos[i];
+        }
+        newElementos[elementos.length] = elementoAgregado;
+        elementos = newElementos;
+        System.out.println("Se agregó el elemento: " + elementoAgregado + " a la lista.\nLa nueva lista contiene los siguientes elementos:");
+        mostrarElementos();
+        return newElementos;
+    }
 
+    String[] modificarElemento(int indiceElemento, String cambioElemento) {
+        
+        if (indiceElemento >= 1 && indiceElemento <= elementos.length) {
+            elementos[indiceElemento - 1] = cambioElemento;
+            System.out.println("El elemento en la posición " + indiceElemento + " ha sido modificado correctamente.");
+        } else {
+            System.out.println("Índice fuera de rango. No se puede modificar el elemento.");
+        }
+        System.out.println("Lista modificada:");
+        mostrarElementos();
+        return elementos;
+    }
+}
 
 
 
