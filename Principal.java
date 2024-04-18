@@ -1,6 +1,6 @@
 import java.util.Scanner;
+
 public class Principal {        
-    
     static Lista[] listas = new Lista[1];
     static int numeroListas = 0;
     static Scanner sc = new Scanner(System.in);
@@ -40,14 +40,12 @@ public class Principal {
             if (opcion == 4) {
                 System.out.println("Saliendo del programa. ¡Hasta luego!");
                 break;
-            }
-            
+            }           
             break;
         }
     }
 
-    static void mostrarListas(){
-        
+    static void mostrarListas(){  
         if (listas != null && listas.length > 0) {
             if (numeroListas == 0) {
                 System.out.println("No hay listas creadas");
