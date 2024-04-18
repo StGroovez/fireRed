@@ -3,20 +3,15 @@ public class Lista {
     /* ATRIBUTOS DE LA LISTA */
 
     String[] elementos = {};
-    String nombre;
-    int numeroElementos;
+    protected String nombre;
+    protected int numeroElementos;
     static Scanner sc = new Scanner(System.in);
 
     /* MÉTODOS DE LA LISTA */
 
-    public String[] getElementos() {
-        return this.elementos;
-    }
-
-    public void mostrarElementos() {
-        System.out.println("Elementos de la lista " + nombre + ": ");
+    public void mostrarElementos() {    
         for (int i = 0; i < elementos.length; i++) {
-            System.out.println((i+1) + " " + elementos[i]);
+            System.out.println((i+1) + " " + getElementos()[i]);
         }    
     }
 
@@ -30,23 +25,21 @@ public class Lista {
     public void setNumeroElementos(int numeroElementos){  
         this.elementos = new String[numeroElementos];
         System.out.println("El número de elementos de la lista es: " + elementos.length);
-
     }
     
     /* AGREGA ELEMENTOS A LA LISTA */
     public void agregarElementos(){
-        for (int i = 0; i < this.elementos.length; i++) {     
+        for (int i = 0; i < elementos.length; i++) {     
             System.out.println("Agrega un elemento: ");
             this.elementos[i] = sc.nextLine();
             
-            while(this.elementos[i].isEmpty() || this.elementos[i] == null) {
+            while(this.elementos[i].isEmpty() || elementos[i] == null) {
                 System.out.println("No puedes agregar un elemento vacío a la lista. Vuelve a ingresar un elemento:");
                 this.elementos[i] = sc.nextLine();
             } 
         }
         System.out.println("Has llegado al límite de elementos, tu lista ha sido creada");
     }
-
 
     /* METODO CONSTRUCTOR */
 
@@ -67,17 +60,33 @@ public class Lista {
         return nombre;
     }
 
+    String validarElemento(){
+        String elementoBorrar = sc.nextLine();
+        while (elementoBorrar == null || elementoBorrar.isEmpty()) {
+            System.out.println("Ingresa un elemento válido");
+            elementoBorrar = sc.nextLine();
+        }
+
+        for (int i = 0; i < elementos.length; i++) { 
+            while(!elementoBorrar.equalsIgnoreCase(elementos[i])){
+                System.out.println("Ingresa un elemento existente");
+                elementoBorrar = sc.nextLine();
+            }
+        }
+        return elementoBorrar;
+    }
+
     static int validacionElementos(){ 
         int numValido;
         while (true) {
-            System.out.println("Ingresa un número entre 1 y 25: ");
+            System.out.println("Ingresa el número de elementos para la lista: ");
             if (sc.hasNextInt()) {
                 numValido = sc.nextInt();
                 sc.nextLine();
-                if (numValido >= 1 && numValido <= 25) {
+                if (numValido > 0) {
                     break;
                 } else {
-                    System.out.println("Número fuera del rango, vuelve a intentarlo.");
+                    System.out.println("Número inválido. Ingresa un número mayor a 0.");
                 }
             } else {
                 System.out.println("Debes ingresar un número entero, vuelve a intentarlo: ");
@@ -104,6 +113,14 @@ public class Lista {
     }
 
     /* MODIFICAR LISTAS */
+
+    public String[] getElementos() {
+        return this.elementos;
+    }
+
+    public String getNombre(){
+        return this.nombre;
+    }
     
     String[] cambiarElementos(int elementoBase, int elementoNuevo ){
         String saveElemento = elementos[elementoBase - 1];
@@ -114,17 +131,23 @@ public class Lista {
         return elementos;
     }
 
-    String[] borrarElemento(String elementoBorrado){
+    String[] borrarElemento(int indiceBorrar) {
+        while (indiceBorrar < 1 || indiceBorrar > elementos.length) {
+            System.out.println("El índice no existe. Ingresa un índice válido: ");
+            indiceBorrar = Lista.validacionNumero();
+        }
         String[] newElementos = new String[elementos.length - 1];
         int j = 0;
+    
         for (int i = 0; i < elementos.length; i++) {
-            if (!elementos[i].equalsIgnoreCase(elementoBorrado)) {
+            if (i != indiceBorrar - 1) {
                 newElementos[j] = elementos[i];
                 j++;
             }
         }
         elementos = newElementos;
-        System.out.println("Se borró el elemento: " + elementoBorrado + " de la lista.\nLa nueva lista contiene los siguientes elementos:");
+    
+        System.out.println("Se borró el elemento en la posición " + indiceBorrar + " de la lista.\nLa nueva lista contiene los siguientes elementos:");
         mostrarElementos();
         return newElementos;
     }
@@ -141,8 +164,7 @@ public class Lista {
         return newElementos;
     }
 
-    String[] modificarElemento(int indiceElemento, String cambioElemento) {
-        
+    String[] modificarElemento(int indiceElemento, String cambioElemento) {       
         if (indiceElemento >= 1 && indiceElemento <= elementos.length) {
             elementos[indiceElemento - 1] = cambioElemento;
             System.out.println("El elemento en la posición " + indiceElemento + " ha sido modificado correctamente.");
@@ -154,6 +176,3 @@ public class Lista {
         return elementos;
     }
 }
-
-
-
